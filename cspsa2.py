@@ -69,7 +69,7 @@ def run_instrumental_continuous_cspsa_simulation(config, run_id=0):
         a_k = a / (k + 1.0) ** s
 
         history.append(calculate_instrumental_cspsa_violation(initial_state, params, photon_num, variation, uncertainty))
-        delta = np.random.choice([1, -1, 1j, -1j], size=10)
+        delta = np.exp(1j * np.random.uniform(0, 2 * np.pi, 10))
         params_plus = params + c_k * delta
         params_minus = params - c_k * delta
 
