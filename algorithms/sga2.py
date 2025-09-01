@@ -2,7 +2,7 @@
 # 包含 CSPSA 优化算法的实现。
 
 import numpy as np
-from simulation_utils2 import (
+from algorithms.simulation_utils2 import (
     calculate_instrumental_sga_violation,
     calculate_chsh_sga_violation,
 

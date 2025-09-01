@@ -3,7 +3,7 @@
 
 import numpy as np
 import qutip as qt
-from simulation_utils2 import (
+from algorithms.simulation_utils2 import (
     calculate_instrumental_cspsa_violation,
     calculate_chsh_cspsa_violation,
 

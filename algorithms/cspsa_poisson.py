@@ -3,8 +3,8 @@
 
 import numpy as np
 # 修正：导入正确的、专用于CSPSA的计算函数
-from simulation_utils_poisson import calculate_cspsa_violation
-from simulation_utils_poisson import calculate_cspsa_chsh_violation
+from algorithms.simulation_utils_poisson import calculate_cspsa_violation
+from algorithms.simulation_utils_poisson import calculate_cspsa_chsh_violation
 
 def run_cspsa_simulation(config, run_id=0):
     """

@@ -3,8 +3,8 @@
 
 import numpy as np
 # 导入正确的、专用于SGA的计算函数
-from simulation_utils_poisson import calculate_sga_violation
-from simulation_utils_poisson import calculate_sga_chsh_violation
+from algorithms.simulation_utils_poisson import calculate_sga_violation
+from algorithms.simulation_utils_poisson import calculate_sga_chsh_violation
 
 def run_sga_simulation(config, run_id=0):
     """
