@@ -68,11 +68,11 @@ def calculate_instrumental_cspsa_violation(rho, params, photon_num, variation, u
         for c1, c2 in param_pairs
     ]
 
-    term1 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term2 = operator_to_probability([qt.tensor(P_A2, P_B0), qt.tensor(P_A2_perp, P_B1), qt.tensor(P_A2, P_B0_perp), qt.tensor(P_A2_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term3 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term4 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term5 = operator_to_probability([qt.tensor(P_A3, P_B0), qt.tensor(P_A3_perp, P_B1), qt.tensor(P_A3, P_B0_perp), qt.tensor(P_A3_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
+    term1 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term2 = operator_to_probability([qt.tensor(P_A2, P_B0), qt.tensor(P_A2_perp, P_B1), qt.tensor(P_A2, P_B0_perp), qt.tensor(P_A2_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term3 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term4 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term5 = operator_to_probability([qt.tensor(P_A3, P_B0), qt.tensor(P_A3_perp, P_B1), qt.tensor(P_A3, P_B0_perp), qt.tensor(P_A3_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
 
     term1_value = np.dot(term1,np.array([1, 1, -1, -1])) # multiplication of vectors
     term2_value = np.dot(term2,np.array([1, 1, -1, -1]))  # multiplication of vectors
@@ -93,10 +93,10 @@ def calculate_chsh_cspsa_violation(rho, params, photon_num, variation, uncertain
         for c1, c2 in param_pairs
     ]
 
-    term1 =  operator_to_probability([qt.tensor(P_A0, P_B0), qt.tensor(P_A0_perp, P_B0), qt.tensor(P_A0, P_B0_perp), qt.tensor(P_A0_perp, P_B0_perp)], rho, photon_num, variation, uncertainty)
-    term2 =  operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B0_perp)], rho, photon_num, variation, uncertainty)
-    term3 =  operator_to_probability([qt.tensor(P_A0, P_B1), qt.tensor(P_A0_perp, P_B1), qt.tensor(P_A0, P_B1_perp), qt.tensor(P_A0_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term4 =  operator_to_probability([qt.tensor(P_A1, P_B1), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B1_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
+    term1 =  operator_to_probability([qt.tensor(P_A0, P_B0), qt.tensor(P_A0_perp, P_B0), qt.tensor(P_A0, P_B0_perp), qt.tensor(P_A0_perp, P_B0_perp)], rho, photon_num/8, variation, uncertainty)
+    term2 =  operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B0_perp)], rho, photon_num/8, variation, uncertainty)
+    term3 =  operator_to_probability([qt.tensor(P_A0, P_B1), qt.tensor(P_A0_perp, P_B1), qt.tensor(P_A0, P_B1_perp), qt.tensor(P_A0_perp, P_B1_perp)], rho, photon_num/8, variation, uncertainty)
+    term4 =  operator_to_probability([qt.tensor(P_A1, P_B1), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B1_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/8, variation, uncertainty)
 
     term1_value = np.dot(term1,np.array([1, -1, -1, 1])) # multiplication of vectors
     term2_value = np.dot(term2,np.array([1, -1, -1, 1])) # multiplication of vectors
@@ -130,11 +130,11 @@ def calculate_instrumental_sga_violation(rho, params, photon_num, variation, unc
         for theta, phi in param_pairs
     ]
 
-    term1 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term2 = operator_to_probability([qt.tensor(P_A2, P_B0), qt.tensor(P_A2_perp, P_B1), qt.tensor(P_A2, P_B0_perp), qt.tensor(P_A2_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term3 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term4 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term5 = operator_to_probability([qt.tensor(P_A3, P_B0), qt.tensor(P_A3_perp, P_B1), qt.tensor(P_A3, P_B0_perp), qt.tensor(P_A3_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
+    term1 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term2 = operator_to_probability([qt.tensor(P_A2, P_B0), qt.tensor(P_A2_perp, P_B1), qt.tensor(P_A2, P_B0_perp), qt.tensor(P_A2_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term3 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term4 = operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
+    term5 = operator_to_probability([qt.tensor(P_A3, P_B0), qt.tensor(P_A3_perp, P_B1), qt.tensor(P_A3, P_B0_perp), qt.tensor(P_A3_perp, P_B1_perp)], rho, photon_num/10, variation, uncertainty)
 
     term1_value = np.dot(term1,np.array([1, 1, -1, -1])) # multiplication of vectors
     term2_value = np.dot(term2,np.array([1, 1, -1, -1]))  # multiplication of vectors
@@ -155,10 +155,10 @@ def calculate_chsh_sga_violation(rho, params, photon_num, variation, uncertainty
         for c1, c2 in param_pairs
     ]
 
-    term1 =  operator_to_probability([qt.tensor(P_A0, P_B0), qt.tensor(P_A0_perp, P_B0), qt.tensor(P_A0, P_B0_perp), qt.tensor(P_A0_perp, P_B0_perp)], rho, photon_num, variation, uncertainty)
-    term2 =  operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B0_perp)], rho, photon_num, variation, uncertainty)
-    term3 =  operator_to_probability([qt.tensor(P_A0, P_B1), qt.tensor(P_A0_perp, P_B1), qt.tensor(P_A0, P_B1_perp), qt.tensor(P_A0_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
-    term4 =  operator_to_probability([qt.tensor(P_A1, P_B1), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B1_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num, variation, uncertainty)
+    term1 =  operator_to_probability([qt.tensor(P_A0, P_B0), qt.tensor(P_A0_perp, P_B0), qt.tensor(P_A0, P_B0_perp), qt.tensor(P_A0_perp, P_B0_perp)], rho, photon_num/8, variation, uncertainty)
+    term2 =  operator_to_probability([qt.tensor(P_A1, P_B0), qt.tensor(P_A1_perp, P_B0), qt.tensor(P_A1, P_B0_perp), qt.tensor(P_A1_perp, P_B0_perp)], rho, photon_num/8, variation, uncertainty)
+    term3 =  operator_to_probability([qt.tensor(P_A0, P_B1), qt.tensor(P_A0_perp, P_B1), qt.tensor(P_A0, P_B1_perp), qt.tensor(P_A0_perp, P_B1_perp)], rho, photon_num/8, variation, uncertainty)
+    term4 =  operator_to_probability([qt.tensor(P_A1, P_B1), qt.tensor(P_A1_perp, P_B1), qt.tensor(P_A1, P_B1_perp), qt.tensor(P_A1_perp, P_B1_perp)], rho, photon_num/8, variation, uncertainty)
 
     term1_value = np.dot(term1,np.array([1, -1, -1, 1])) # multiplication of vectors
     term2_value = np.dot(term2,np.array([1, -1, -1, 1])) # multiplication of vectors
