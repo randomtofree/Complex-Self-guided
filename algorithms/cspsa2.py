@@ -1,5 +1,5 @@
-# cspsa.py
-# 包含 CSPSA 优化算法的实现。
+# cspsa2.py
+# Contains CSPSA optimization algorithm implementation.
 
 import numpy as np
 import qutip as qt
@@ -10,7 +10,7 @@ from algorithms.simulation_utils2 import (
 )
 
 
-# 定义增益序列
+# Define gain sequence
 
 def run_instrumental_cspsa_simulation(config, run_id=0):
     if run_id > 0 and run_id % 10 == 0:
@@ -43,7 +43,7 @@ def run_instrumental_cspsa_simulation(config, run_id=0):
         gradient = (val_plus - val_minus) / (2 * c_k * np.conj(delta))
         params += a_k * gradient
         params /= np.linalg.norm(params)
-    #调试代码
+    # Debug code
 
     history.append(calculate_instrumental_cspsa_violation(initial_state, params, photon_num, variation, uncertainty))
     return history
@@ -79,7 +79,7 @@ def run_instrumental_continuous_cspsa_simulation(config, run_id=0):
         gradient = (val_plus - val_minus) / (2 * c_k * np.conj(delta))
         params += a_k * gradient
         params /= np.linalg.norm(params)
-    #调试代码
+    # Debug code
 
     history.append(calculate_instrumental_cspsa_violation(initial_state, params, photon_num, variation, uncertainty))
     return history

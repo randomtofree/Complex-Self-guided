@@ -1,5 +1,5 @@
-# cspsa.py
-# 包含 CSPSA 优化算法的实现。
+# sga2.py
+# Contains SGA optimization algorithm implementation.
 
 import numpy as np
 from algorithms.simulation_utils2 import (
@@ -9,7 +9,7 @@ from algorithms.simulation_utils2 import (
 )
 
 
-# 定义增益序列
+# Define gain sequence
 
 def run_instrumental_sga_simulation(config, run_id=0):
     if run_id > 0 and run_id % 10 == 0:

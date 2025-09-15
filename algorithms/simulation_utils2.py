@@ -1,20 +1,20 @@
 # simulation_utils.py
-# 包含了为SGA和CSPSA两种不同模型构建算符的核心函数。
-# 修正版：SGA和CSPSA的实现现在完全独立且各自正确。
+# Contains core functions for building operators for SGA and CSPSA models.
+# Revised version: SGA and CSPSA implementations are now completely independent and correct.
 
 import numpy as np
 import qutip as qt
 
-#定义一些基层关键参数
-#return 的数据考不考虑poisson噪声, 考不考虑shot noise， 考不考虑measurement misaligin， 考不考虑uncertainty。
+# Define some basic key parameters
+# Whether the returned data considers Poisson noise, shot noise, measurement misalignment, uncertainty.
 # val = np.random.binomial(np.random.poisson(1000), np.real((I_op * rho).tr()))
 # =============================================================================
-# --- CSPSA 相关的函数 (Functions for CSPSA) ---
-# 这部分是正确的，保持不变
+# --- CSPSA related functions (Functions for CSPSA) ---
+# This part is correct and remains unchanged
 # =============================================================================
 
 def create_cspsa_projectors(c1, c2):
-    """创建CSPSA投影算符对"""
+    """Create CSPSA projector pairs"""
     psi = c1 * qt.basis(2, 0) + c2 * qt.basis(2, 1)
     if psi.norm() < 1e-9:
         return qt.qzero(2), qt.qeye(2)
@@ -60,7 +60,7 @@ def operator_to_probability(
 
 
 def calculate_instrumental_cspsa_violation(rho, params, photon_num, variation, uncertainty):
-    """为CSPSA计算违背值 (基于'bell'算符)。"""
+    """Calculate violation value for CSPSA (based on 'bell' operator)."""
     param_pairs = np.reshape(params, (5, 2))
     [(P_A1, P_A1_perp), (P_A2, P_A2_perp), (P_A3, P_A3_perp),
      (P_B0, P_B0_perp), (P_B1, P_B1_perp)] = [
@@ -85,7 +85,7 @@ def calculate_instrumental_cspsa_violation(rho, params, photon_num, variation, u
     return inequ
 
 def calculate_chsh_cspsa_violation(rho, params, photon_num, variation, uncertainty):
-    """为CSPSA计算违背值 (基于'bell'算符)。"""
+    """Calculate violation value for CSPSA (based on 'bell' operator)."""
     param_pairs = np.reshape(params, (4, 2))
     [(P_A0, P_A0_perp), (P_A1, P_A1_perp), (P_B0, P_B0_perp),
       (P_B1, P_B1_perp)] = [
@@ -108,8 +108,8 @@ def calculate_chsh_cspsa_violation(rho, params, photon_num, variation, uncertain
     return inequ
 
 # =============================================================================
-# --- SGA 相关的函数 (Functions for SGA) ---
-# 这是全新的、与您的Mathematica代码完全等价的实现
+# --- SGA related functions (Functions for SGA) ---
+# This is a completely new implementation that is fully equivalent to your Mathematica code
 # =============================================================================
 
 def create_sga_projectors(theta, phi):
@@ -120,8 +120,8 @@ def create_sga_projectors(theta, phi):
 
 def calculate_instrumental_sga_violation(rho, params, photon_num, variation, uncertainty):
     """
-    为SGA计算违背值。
-    参数是10个实数，每对(theta, phi)通过一个特殊的映射定义一个测量。
+    Calculate violation value for SGA.
+    Parameters are 10 real numbers, each pair (theta, phi) defines a measurement through a special mapping.
     """
     param_pairs = np.reshape(params, (5, 2))
     [(P_A1, P_A1_perp), (P_A2, P_A2_perp), (P_A3, P_A3_perp),
@@ -147,7 +147,7 @@ def calculate_instrumental_sga_violation(rho, params, photon_num, variation, unc
     return inequ
 
 def calculate_chsh_sga_violation(rho, params, photon_num, variation, uncertainty):
-    """为CSPSA计算违背值 (基于'bell'算符)。"""
+    """Calculate violation value for SGA (based on 'bell' operator)."""
     param_pairs = np.reshape(params, (4, 2))
     [(P_A0, P_A0_perp), (P_A1, P_A1_perp), (P_B0, P_B0_perp),
       (P_B1, P_B1_perp)] = [
